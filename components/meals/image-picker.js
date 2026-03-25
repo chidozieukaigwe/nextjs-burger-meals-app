@@ -41,7 +41,7 @@ export default function ImagePicker({ label, name }) {
             <Image
               src={pickedImage}
               alt="The image selected by the user"
-              layout="fill"
+              fill
               style={{ objectFit: "cover" }}
             />
           )}
