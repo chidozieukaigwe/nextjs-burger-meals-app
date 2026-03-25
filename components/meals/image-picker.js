@@ -42,7 +42,7 @@ export default function ImagePicker({ label, name }) {
               src={pickedImage}
               alt="The image selected by the user"
               layout="fill"
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
             />
           )}
         </div>
@@ -54,6 +54,7 @@ export default function ImagePicker({ label, name }) {
           accept="image/png, image/jpeg"
           ref={fileInputRef}
           onChange={handleImageChange}
+          required
         />
         <button
           className={classes.button}
