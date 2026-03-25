@@ -1,25 +1,9 @@
+"use client";
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
+import { shareMeal } from "@/lib/actions";
 
 export default function ShareMealPage() {
-  async function shareMeal(formData) {
-    /**
-     * Server Action
-     * use server directive is used to indicate that the function should be executed on the server side. This is important for handling form submissions securely and efficiently, as it allows the server to process the data without exposing sensitive information to the client. By using this directive, we can ensure that the meal sharing functionality is implemented in a way that adheres to best practices for server-side processing in Next.js applications.
-     */
-    "use server";
-    const meal = {
-      title: formData.get("title"),
-      summary: formData.get("summary"),
-      instructions: formData.get("instructions"),
-      image: formData.get("image"),
-      creator: formData.get("name"),
-      creator_email: formData.get("email"),
-    };
-
-    console.log(meal);
-  }
-
   return (
     <>
       <header className={classes.header}>
