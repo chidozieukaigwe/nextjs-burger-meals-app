@@ -3,6 +3,23 @@ import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
+/**
+ * The generateMetadata function is a special function in Next.js that allows you to dynamically generate metadata for a page based on the parameters passed to it. In this case, it takes the mealSlug parameter from the URL and can use it to fetch the meal details and generate appropriate metadata such as the page title, description, and other relevant information. This helps improve SEO and provides a better user experience by displaying relevant information in search engine results and when sharing the page on social media platforms.
+ */
+export async function generateMetadata({ params }) {
+  const { mealSlug } = await params;
+  const meal = getMeal(mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 export default async function MealDetailsPage({ params }) {
   const { mealSlug } = await params;
   const meal = getMeal(mealSlug);
